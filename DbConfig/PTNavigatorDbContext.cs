@@ -5,7 +5,6 @@ namespace PublicTransportNavigatorv2.DbConfig
 {
     public class PTNavigatorDbContext(DbContextOptions<PTNavigatorDbContext> options) : DbContext(options)
     {
-        public DbSet<Coordinate> Coordinates { get; set; }
         public DbSet<VehicleType> LineTypes { get; set; }
         public DbSet<Line> Lines { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
@@ -16,6 +15,11 @@ namespace PublicTransportNavigatorv2.DbConfig
         public DbSet<SeatReservation> SeatReservations { get; set; }
         public DbSet<Travel> Travels { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PTNavigatorDbContext).Assembly);
+        }
     }
 }

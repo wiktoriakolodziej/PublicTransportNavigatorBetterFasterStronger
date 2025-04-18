@@ -1,18 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PublicTransportNavigatorv2.DbConfig;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PublicTransportNavigatorv2.Model
 {
     [Table("lines")]
-    [EntityTypeConfiguration(typeof(LineConfiguration))]
     public class Line
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
+        [MaxLength(150)]
         public required string Name { get; set; }
         public required ICollection<Vehicle> Vehicles { get; set;}
-        private long CalendarId { get; set; }
-        public required Calendar Calendar { get; set; }
+        public int CalendarId { get; set; }
+        public Calendar? Calendar { get; set; }
 
     }
 }

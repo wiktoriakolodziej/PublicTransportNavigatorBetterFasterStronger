@@ -2,7 +2,15 @@ using PublicTransportNavigatorv2;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.RegisterServices();
+try
+{
+    builder.RegisterServices();
+}
+catch(Exception ex)
+{
+    Console.WriteLine($"Error during service registration: {ex.Message}");
+    return;
+}
 
 var app = builder.Build();
 

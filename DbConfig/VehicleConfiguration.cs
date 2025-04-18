@@ -11,8 +11,13 @@ namespace PublicTransportNavigatorv2.DbConfig
             builder.Property(v => v.WheelchairAccessible).HasDefaultValue(false);
 
             builder.HasOne(v => v.VehicleType)
-                .WithMany(vt => vt.Vehicles)
+                .WithMany()
+                .HasForeignKey(v=> v.VehicleTypeId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(v => v.Line)
+                .WithMany(l => l.Vehicles)
+                .HasForeignKey(v => v.LineId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

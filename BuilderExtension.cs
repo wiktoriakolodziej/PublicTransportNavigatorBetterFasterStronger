@@ -5,7 +5,7 @@ namespace PublicTransportNavigatorv2
 {
     public static class BuilderExtension
     {
-        private static string DefaultConnection = "DefaultConnection";
+        private static readonly string DefaultConnection = "DefaultConnection";
         public static void RegisterServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddControllers();

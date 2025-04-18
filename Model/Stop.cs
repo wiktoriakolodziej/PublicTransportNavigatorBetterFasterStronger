@@ -1,9 +1,15 @@
-﻿namespace PublicTransportNavigatorv2.Model
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PublicTransportNavigatorv2.Model
 {
+    [Table("stops")]
     public class Stop
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
+        [MaxLength(150)]
         public required string Name { get; set; }
         public bool OnRequest { get; set; } = false;
+        public required Coordinate Coordinate { get; set; }
     }
 }

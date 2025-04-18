@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace PublicTransportNavigatorv2.Model
 {
-    [Table("coordinates")]
+    [Owned]
     public class Coordinate
     {
-        public long Id { get; set; }
         public required double Latitude { get; set; }
         public required double Longitude { get; set; }
     }

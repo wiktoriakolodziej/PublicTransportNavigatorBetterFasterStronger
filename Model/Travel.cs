@@ -1,9 +1,14 @@
-﻿namespace PublicTransportNavigatorv2.Model
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PublicTransportNavigatorv2.Model
 {
+    [Table("travels")]
     public class Travel
     {
-        public long Id { get; set; }
-        public TimeOnly StartTime { get; set; }
-        public TimeOnly EndTime { get; set; }
+        public int Id { get; set; }
+        public DateTimeOffset StartTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
+        public int? UserId { get; set; }
+        public User? User { get; set; }
     }
 }

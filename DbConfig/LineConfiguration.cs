@@ -8,14 +8,13 @@ namespace PublicTransportNavigatorv2.DbConfig
     {
         public void Configure(EntityTypeBuilder<Line> builder)
         {
-            builder.Property(e => e.Name).IsRequired();
-
-            builder.HasMany(l => l.Vehicles)
-                .WithOne(v => v.Line)
-                .OnDelete(DeleteBehavior.SetNull);
+            builder.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(150);
 
             builder.HasOne(l => l.Calendar)
-                .WithMany(c => c.Lines)
+                .WithMany()
+                .HasForeignKey(l=>l.CalendarId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
