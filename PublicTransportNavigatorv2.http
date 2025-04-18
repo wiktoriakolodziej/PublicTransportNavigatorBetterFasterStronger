@@ -1,6 +1,0 @@
-@PublicTransportNavigatorv2_HostAddress = http://localhost:5134
-
-GET {{PublicTransportNavigatorv2_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

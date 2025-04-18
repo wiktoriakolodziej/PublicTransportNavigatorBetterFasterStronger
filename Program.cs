@@ -1,11 +1,16 @@
+using PublicTransportNavigatorv2;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+try
+{
+    builder.RegisterServices();
+}
+catch(Exception ex)
+{
+    Console.WriteLine($"Error during service registration: {ex.Message}");
+    return;
+}
 
 var app = builder.Build();
 
@@ -16,7 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection(); //Forces requests to switch from HTTP to HTTPS for security.
 
 app.UseAuthorization();
 
